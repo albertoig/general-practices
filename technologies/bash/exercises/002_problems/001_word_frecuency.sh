@@ -22,7 +22,7 @@
 
 word_frecuency() {
     local filename="$1"
-    cat "$filename" | tr ' ' '\n' | sort | uniq -c | sort -r
+    cat "$filename" | tr ' ' '\n' | grep -v '^$'| sort | uniq -c | sort -nr | awk '{print $2, $1}'
 }
 
 # Only execute if the script is run directly (not sourced)
